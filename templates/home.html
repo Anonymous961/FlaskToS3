@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+</head>
+<body>
+  <h1>Welcome to the home page</h1>
+  <form action="{{url_for('views.create')}}" method="post" enctype="multipart/form-data">
+    <label for="user_file"> Upload Your file</label>
+    <br>
+    <input type="file" name="user_file">
+    <br>
+    <button type="submit">Upload</button>
+    <br>
+    <h2>Available files to download</h2>
+    <ul>
+      {% for file in files %}
+      <li>
+        <a href="{{url_for("views.download",filename=file)}}">{{file}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </form>
+</body>
+</html>
